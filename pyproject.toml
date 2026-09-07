@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aegis"
+version = "0.1.0"
+description = "AEGIS — 개발자 워크스페이스 3-경계 보안 시스템 (single-machine developer security workspace)"
+requires-python = ">=3.11"
+# UOW-0 Contracts is a zero-third-party layer (stdlib only). Runtime deps for
+# other units (liboqs, mitmproxy, FastAPI, playwright, ...) are declared per-unit
+# via optional-dependencies as those UOWs are built.
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "hypothesis>=6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
